@@ -36,6 +36,8 @@ The IINA APIs are available in the global object `iina`.
 
 ### Global/Local plugin instances
 
+![image](https://user-images.githubusercontent.com/8478049/172773517-4135f75e-49d8-4db3-92a9-48cf005753f4.png)
+
 A **plugin instance** is created for each player core, which contains an isolated JavaScript environment.
 Therefore, normally, a plugin instance (i.e. the code you write) can only control the associated player core.
 For example,
