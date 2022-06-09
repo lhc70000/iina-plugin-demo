@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standalone Window</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        color: #eee;
+      }
+    }
+
+    .container {
+      padding: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p>Now Playing: <span id="title"></span></p>
+    <p>Paused: <span id="status"></span></p>
+    <p>Volume: <span id="volume"></span></p>
+    <div><button id="pause-btn">Toggle Pause</button></div>
+    <div>
+      <button id="volume-btn">Set volume to</button>
+      <input type="number" id="volume-input" />
+    </div>
+  </div>
+  <script>
+    iina.onMessage("get-update", (data) => {
+      document.getElementById("title").textContent = data.title;
+      document.getElementById("status").textContent = data.isPaused;
+      document.getElementById("volume").textContent = data.volume;
+    });
+    iina.postMessage("request-update");
+    document.getElementById("pause-btn").addEventListener("click", () => {
+      iina.postMessage("toggle-pause");
+    });
+    document.getElementById("volume-btn").addEventListener("click", () => {
+      const volume = parseInt(document.getElementById("volume-input").value);
+      iina.postMessage("set-volume", { volume });
+    });
+  </script>
+</body>
+
+</html>

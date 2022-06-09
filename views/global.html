@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        color: #eee;
+      }
+    }
+
+    .container {
+      padding: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div style="margin-bottom: 20px;">
+      This window lets you play a same video in two windows side-by-side.
+      Since it belongs to global instance of the plugin, it can be opened anytime.
+      Together with global.js, they demostrate how to create and control multiple player cores.
+    </div>
+    <div>
+      <button id="open-btn">Open file</button>
+    </div>
+    <div>
+      <button id="left-btn">&lt;&lt;</button>
+      <button id="pause-btn">Play/Pause</button>
+      <button id="right-btn">&gt;&gt;</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById("open-btn").addEventListener("click", () => {
+      iina.postMessage("open-file");
+    });
+    document.getElementById("pause-btn").addEventListener("click", () => {
+      iina.postMessage("pause");
+    });
+    document.getElementById("left-btn").addEventListener("click", () => {
+      iina.postMessage("seek-backward");
+    });
+    document.getElementById("right-btn").addEventListener("click", () => {
+      iina.postMessage("seek-forward");
+    });
+  </script>
+</body>
+
+</html>

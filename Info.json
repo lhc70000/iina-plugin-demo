@@ -1,0 +1,26 @@
+{
+  "name": "Demo Plugin",
+  "identifier": "io.iina.demo",
+  "version": "0.1.0",
+  "ghVersion": 1,
+  "ghRepo": "lhc70000/iina-plugin-demo",
+  "description": "A demo plugin for iina's plugin system",
+  "author": {
+    "name": "lhc70000",
+    "email": "lhc@iina.io",
+    "url": "https://iina.io"
+  },
+  "helpPage": "https://iina.io",
+  "entry": "entries/main.js",
+  "globalEntry": "entries/global.js",
+  "permissions": ["show-osd", "network-request", "video-overlay", "file-system"],
+  "allowedDomains": ["iina.io", "*.iina.io"],
+  "subtitleProviders": [{ "id": "demo", "name": "Subtitle API Demo" }],
+  "sidebarTab": { "name": "Demo" },
+  "preferencesPage": "pref.html",
+  "preferenceDefaults": {
+    "keyNum": 10,
+    "keyString": "hello",
+    "keyBool": true
+  }
+}
